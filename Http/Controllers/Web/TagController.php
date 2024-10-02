@@ -55,8 +55,10 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:tags',
+        
+         // validate to foysal
+         $validatedData = $request->validate([
+            'name' => 'string|required|unique:tags',
             'status' => 'required',
         ]);
 
@@ -112,6 +114,12 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // validate to foysal
+        $validatedData = $request->validate([
+            'name' => 'string|required',
+        ]);
+
+
         $data = Tag::find($id);
         $data->name = $request->name;
         $data->slug = str::slug($request->name);

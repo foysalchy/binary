@@ -48,12 +48,14 @@ class FeaturetextController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         // dd($request);
         $validated = $request->validate([
-            'title' => 'required|max:30',
+            'title' => 'string|required|max:30',
             'image' => ['image',
                         'mimes:jpg,webp,png,jpeg,gif,svg',
                         'max:1024'],
+            'subtitle'=>'string',
         ]);
         $image = $request->file('image');
       //  dd($image);
@@ -112,6 +114,12 @@ class FeaturetextController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //foysal
+        $validated = $request->validate([
+            'title' => 'string',
+            'subtitle'=>'string',
+        ]);
+
         $image = $request->file('image');
         //  dd($image);
           if($image)

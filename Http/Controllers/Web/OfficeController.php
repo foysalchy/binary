@@ -55,12 +55,14 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'branch_name' => 'required|unique:offices',
+            'branch_name' => 'string|required|unique:offices',
             'address' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
+            'phone' => 'string|required',
+            'email' => 'string|required',
             'status' => 'required',
+            'note' => 'string',
         ]);
 
         $data = new Office();
@@ -143,6 +145,14 @@ class OfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
+           //foysal
+           $validatedData = $request->validate([
+            'branch_name' => 'string',
+            'phone' => 'string',
+            'email' => 'string',
+            'note' => 'string',
+        ]);
+
         $data = Office::find($id);
         $data->branch_name = $request->branch_name;
         $data->address = $request->address;

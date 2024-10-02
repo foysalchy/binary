@@ -117,6 +117,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'email' => 'string',
+           
+        ]); // validate to foysal
+
         $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
@@ -160,7 +166,11 @@ class UserController extends Controller
         
     }
     public function change_pass(Request $request ,$id){
-
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'email' => 'string|required',
+            'old_password'=>'string'
+        ]); // validate to foysal
         $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;

@@ -54,9 +54,10 @@ class BGColorController extends Controller
      */
     public function store(Request $request)
     {
+        //validate to foysal
         $validatedData = $request->validate([
-            'code' => 'required',
-            'section' => 'required',
+            'code' => 'string|required',
+            'section' => 'string|required',
             'status' => 'required',
         ]);
 
@@ -112,11 +113,13 @@ class BGColorController extends Controller
      */
     public function update(Request $request, $id)
     {
+          //validate to foysal
         $validatedData = $request->validate([
-            'code' => 'required',
-            'section' => 'required',
-            'status' => 'required',
+            'code' => 'string|required',
+            'section' => 'string|required',
+            'status' => 'string|required',
         ]);
+        
 
         $data = BGColor::find($id);
         $data->code = $request->code;

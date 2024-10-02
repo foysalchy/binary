@@ -45,6 +45,11 @@ class offerTypeController extends Controller
      */
     public function store(Request $request)
     {
+           // validate to foysal
+         $validatedData = $request->validate([
+            'name' => 'string',
+        ]);
+
         DB::table('offer_type')->insert(
             array(
                    'name'  =>  $request->name,

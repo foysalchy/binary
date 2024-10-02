@@ -44,14 +44,15 @@ class AuthenticationController extends Controller
 
     public function customerSubmitRegisterForm(Request $request)
     {
-
+    // validate to foysal
       $validator = Validator::make($request->all(),[
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'phone' => 'required',
-        'email' => 'required',
+        'first_name' => 'string|required',
+        'last_name' => 'string|required',
+        'phone' => 'string|required',
+        'email' => 'string|required',
         'password' => 'required',
         'password_confirmation' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+  
       ]);
       if(!$validator->passes()){
 

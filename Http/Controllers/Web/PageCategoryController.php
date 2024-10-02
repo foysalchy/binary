@@ -55,8 +55,9 @@ class PageCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'string|required',
             'status' => 'required',
         ]);
 
@@ -111,6 +112,11 @@ class PageCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //foysal
+        $validatedData = $request->validate([
+            'name' => 'string',
+        ]);
+
         $category = PageCategory::findorfail($id);
         $category->name = $request->name;
         $category->status = $request->status;

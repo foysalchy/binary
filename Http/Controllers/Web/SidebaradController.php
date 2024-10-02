@@ -54,9 +54,10 @@ class SidebaradController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'meta_title' => 'required',
-            'meta_des' => 'required',
+            'meta_title' => 'string|required',
+            'meta_des' => 'string|required',
             'image' => 'required',
             'status' => 'required',
         ]);
@@ -128,6 +129,12 @@ class SidebaradController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //foysal
+        $validatedData = $request->validate([
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            
+        ]);
         $data = SidebarAd::find($id);
         $data->meta_title = $request->meta_title;
         $data->meta_des = $request->meta_des;

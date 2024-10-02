@@ -55,9 +55,10 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:components',
+            'name' => 'string|required',
+            'slug' => 'string|required|unique:components',
             'image' => 'required',
             'status' => 'required',
         ]);
@@ -133,6 +134,14 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+         //foysal
+         $validatedData = $request->validate([
+            'name' => 'string',
+            'slug' => 'string',
+             
+        ]);
+
         $data = Component::find($id);
         $data->name = $request->name;
         $data->slug = Str::slug($request->slug);

@@ -62,10 +62,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+         // validate to foysal
         $validatedData = $request->validate([
-            'title' => 'required|unique:posts',
-            'slug' => 'required|unique:posts',
+            'title' => 'string|required|unique:posts',
+            'slug' => 'string|required|unique:posts',
             'status' => 'required',
+            'meta_title' => 'string',
+            'meta_description' => 'string',
+            'description' => 'string',
+            'key_words' => 'string', 
+           
 
         ]);
 
@@ -164,6 +170,20 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+          // validate to foysal
+          $validatedData = $request->validate([
+            'title' => 'string|required',
+            'slug' => 'string|required', 
+            'meta_title' => 'string',
+            'meta_description' => 'string',
+            'description' => 'string',
+            'key_words' => 'string', 
+           
+
+        ]);
+
+
         $user_id = Auth::user()->id;
       
         $data = Post::find($id);

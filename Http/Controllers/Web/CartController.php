@@ -305,7 +305,9 @@ switch($SiteSetting->templete) {
 
     public function apply_coupon(Request $request)
     {
-
+        $validated = $request->validate([
+            'couponCode' => 'string',
+        ]); // validate to foysal
 
         $contents = Cart::content();
         $couponCode = $request->couponCode;
@@ -396,16 +398,18 @@ switch($SiteSetting->templete) {
 
     public function submitOrder(Request $request)
     {
-        // $this->validate($request, [
-        //     'shipping_first_name' => 'required',
-        //     'shipping_last_name' => 'required',
-        //     'shipping_phone' => 'required',
-        //     'shipping_email' => 'required',
-        //     'city' => 'required ',
-        //     'postcode' => 'required ',
-        //     'country' => 'required ',
-        //     'address' => 'required ',
-        // ]);
+        // validate to foysal
+        $this->validate($request, [
+            'shipping_first_name' => 'string',
+            'shipping_last_name' => 'string',
+            'shipping_phone' => 'string',
+            'shipping_email' => 'string',
+            'city' => 'string ',
+            'postcode' => 'string',
+            'country' => 'string',
+            'address' => 'string',
+            'message' => 'string',
+        ]);
 
 
 

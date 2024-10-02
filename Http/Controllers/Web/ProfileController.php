@@ -98,6 +98,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
+        // validate to foysal
+        $this->validate($request, [
+            'first_name' => 'string',
+            'last_name' => 'string',
+            'phone' => 'string',
+            'email' => 'string',
+            'city' => 'string',
+            'post_code' => 'string',
+            'country' => 'string',
+            'address' => 'string',
+        ]);
 
         $user_id = $request->user_id;
         $first_name = $request->first_name;

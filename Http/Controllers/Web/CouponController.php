@@ -54,10 +54,11 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'code' => 'required|unique:coupons',
-            'discount' => 'required',
-            'status' => 'required',
+            'code' => 'string|required|unique:coupons',
+            'discount' => 'string|required',
+            'status' => 'string|required',
         ]);
 
         $data = new Coupon();
@@ -112,7 +113,11 @@ class CouponController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //foysal
+        $validatedData = $request->validate([
+            'code' => 'string',
+            'discount' => 'string', 
+        ]);
         $data = Coupon::find($id);
         $data->code = $request->code;
         $data->discount = $request->discount;

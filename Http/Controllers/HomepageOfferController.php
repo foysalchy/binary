@@ -91,6 +91,11 @@ class HomepageOfferController extends Controller
     public function update(Request $request, $id)
     {
 
+         //foysal
+         $validatedData = $request->validate([
+            'title' => 'string',
+            'link'=>'string',
+        ]);
         $image = $request->file('image');
           if($image)
           {

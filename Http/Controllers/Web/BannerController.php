@@ -55,10 +55,18 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+
+        //validate to foysal
         $validatedData = $request->validate([
             'image' => 'required',
             'status' => 'required',
+
+            'title'=>'string',
+            'url'=>'string',
+            'description'=>'string', 
         ]);
+                   
+                
 
 
         $data = new Banner();
@@ -149,6 +157,13 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
+         //validate to foysal
+         $validatedData = $request->validate([
+            'title'=>'string',
+            'url'=>'string',
+            'description'=>'string', 
+        ]);
+              
         $data = Banner::find($id);
       //  dd($data);
         $data->title = $request->title;

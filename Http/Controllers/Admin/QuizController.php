@@ -41,9 +41,10 @@ class QuizController extends Controller
         // ]);
         // $request->user()->quizzes()->create($validated);
         $validated = $request->validate([
-            'name' => 'required',
-            'title' => 'required',
-        ]);
+            'name' => 'string|required',
+            'title' => 'string|required',
+            'description' => 'string|nullable',
+        ]); // validate to foysal
         // dd($request->q);
         $quiz = new Quiz;
         $quiz->quiztype = 'instant';
@@ -110,7 +111,11 @@ class QuizController extends Controller
         return view('admin.quizzes.edit',compact('quiz'));
     }
     public function update(Request $request, Quiz $quiz){
-       
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'title' => 'string|required',
+            'description' => 'string|nullable',
+        ]); // validate to foysal
         $quiz = Quiz::find($quiz->id);;
         $quiz->quiztype = 'instant';
         $quiz->name = $request->name;
