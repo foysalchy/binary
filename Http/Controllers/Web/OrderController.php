@@ -133,6 +133,16 @@ class OrderController extends Controller
 
     public function update_shipping_details(Request $request, $id)
     {
+        $validated = $request->validate([
+            'shipping_first_name' => 'string',
+            'shipping_last_name' => 'string', 
+            'shipping_email' => 'string',
+            'address' => 'string',
+            'city' => 'string',
+            'postcode' => 'string',
+            'country' => 'string',
+        ]);
+        // validate to foysal
         $data = Order::find($id);
         $data->shipping_first_name = $request->shipping_first_name;
         $data->shipping_last_name = $request->shipping_last_name;
@@ -193,6 +203,11 @@ class OrderController extends Controller
         // return view('backend.admin.order.mail_details',compact('customer'));
     }
     public function save_email(Request $request){
+        $validated = $request->validate([
+            'subject' => 'string',
+            'description' => 'string',
+        ]);
+        // validate to foysal
         $customer = Customer::find($request->customer_id);
         $name = $customer->first_name.' '.$customer->last_name;
         $email = $customer->email;

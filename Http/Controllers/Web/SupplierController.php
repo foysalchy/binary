@@ -39,15 +39,16 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        // validate to foysal
         $validatedData = $request->validate([
-            'name' => 'required|unique:suppliers',
-            'company' => 'required',
-            'phone' => 'required',
+            'name' => 'string|required|unique:suppliers',
+            'company' => 'string|required',
+            'phone' => 'string|required',
             'email' => 'required|unique:suppliers',
-            'city' => 'required',
-            'post_code' => 'required',
-            'address' => 'required',
-            'country' => 'required',
+            'city' => 'string|required',
+            'post_code' => 'string|required',
+            'address' => 'string|required',
+            'country' => 'string|required',
             'image' => 'required',
             'status' => 'required',
         ]);
@@ -120,6 +121,17 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
 
+        // validate to foysal
+        $validatedData = $request->validate([
+            'name' => 'string',
+            'company' => 'string',
+            'phone' => 'string',
+            'email' => 'required',
+            'city' => 'string',
+            'post_code' => 'string',
+            'address' => 'string',
+            'country' => 'string', 
+        ]);
         $data = Supplier::find($id);
         $data->name = $request->name;
         $data->slug = str::slug($request->name);

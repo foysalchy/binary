@@ -45,6 +45,11 @@ class IndexController extends Controller
     }
 
     public function result(Request $request){
+        $validated = $request->validate([
+            'quiz_id' => 'integer|required',
+            'name' => 'string',
+            'name' => 'string', 
+        ]); // validate to foysal
       //dd($request);
     if(!empty($request->myanswer)){
         $questions = "";

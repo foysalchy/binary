@@ -63,13 +63,18 @@ class Proprocategorycontroller extends Controller
      */
     public function store(Request $request)
     {
+         // validate to foysal
         $validatedData = $request->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:proprocategories',
+            'name' => 'string|required',
+            'slug' => 'string|required|unique:proprocategories',
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'pro_sub_category_id' => 'required',
             'status' => 'required',
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'description' => 'string',
+            'meta_keywords' => 'string', 
         ]);
 
         $data = new Proprocategory();
@@ -176,6 +181,17 @@ class Proprocategorycontroller extends Controller
      */
     public function update(Request $request, $id)
     {
+         // validate to foysal
+         $validatedData = $request->validate([
+            'name' => 'string|required',
+            'slug' => 'string',
+           
+            'status' => 'required',
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'description' => 'string',
+            'meta_keywords' => 'string', 
+        ]);
 
         $data = Proprocategory::find($id);
         $data->category_id = $request->category_id;

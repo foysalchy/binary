@@ -59,11 +59,16 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
+         // validate to foysal
         $validatedData = $request->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:subcategories',
+            'name' => 'string|required',
+            'slug' => 'string|required|unique:subcategories',
             'category_id' => 'required',
             'status' => 'required',
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'description' => 'string',
+            'meta_keywords' => 'string', 
         ]);
 
         $data = new Subcategory();
@@ -165,6 +170,18 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+          // validate to foysal
+          $validatedData = $request->validate([
+            'name' => 'string|required',
+            'slug' => 'string|required|unique:subcategories',
+            'category_id' => 'required',
+            
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'description' => 'string',
+            'meta_keywords' => 'string', 
+        ]);
+
         $data = Subcategory::find($id);
         $data->category_id = $request->category_id;
         $data->name = $request->name;

@@ -799,10 +799,12 @@ class WelcomeController extends Controller
 
 
     public function submit_contactus(Request $request) {
-        
+          //validate to foysal
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required'
+            'name' => 'string|required',
+            'email' => 'string|required',
+            'subject'=>'string',
+            'message'=>'string',
         ]);
 
         $name = $request->name;
@@ -1028,18 +1030,19 @@ class WelcomeController extends Controller
         return  view('templete_two.page.complain');
     }
     public function complain_store(Request $request){
-
+         //validate to foysal
         // dd($request);
         $validated = $request->validate([
-            'name' => 'required|max:30',
-            'phone' => 'required',
+            'name' => 'string|required|max:30',
+            'phone' => 'string|required',
             'email' => 'email:rfc,dns',
-            'subject' => 'required',
-            'details' => 'required',
+            'subject' => 'string|required',
+            'details' => 'string|required',
             'image' => ['image',
                         'mimes:jpg,webp,png,jpeg,gif,svg',
                         'max:2048'],
         ]);
+        
         $image = $request->file('image');
          //dd($image);
         if($image)

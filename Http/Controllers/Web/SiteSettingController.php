@@ -57,13 +57,19 @@ class SiteSettingController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'name' => 'required|unique:site_settings',
-            'address' => 'required',
-            // 'phone' => 'required',
-            'email' => 'required',
+            'name' => 'string|required|unique:site_settings',
+            'address' => 'string|required',
+             'phone' => 'string',
+            'email' => 'string|required',
             'templete' => 'required',
             'status' => 'required',
+
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'meta_keywords' => 'string',
+            'meta_title' => 'string',
         ]);
 
 
@@ -162,6 +168,20 @@ class SiteSettingController extends Controller
 
         ]);
         
+        //foysal
+        $validatedData = $request->validate([
+            'name' => 'string',
+            'address' => 'string|required',
+             'phone' => 'string',
+            'email' => 'string',
+          
+            
+
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'meta_keywords' => 'string',
+            'meta_title' => 'string',
+        ]);
         
         $data = SiteSetting::find($id);
         $data->name = $request->name;

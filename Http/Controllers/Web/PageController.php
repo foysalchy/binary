@@ -59,10 +59,14 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+        // foysal
         $validatedData = $request->validate([
-            'title' => 'required|unique:pages',
-            'content' => 'required',
+            'title' => 'string|required|unique:pages',
+            'content' => 'string|required',
             'status' => 'required',
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'meta_keywords' => 'string',
         ]);
 
         $category = new Page();
@@ -144,6 +148,15 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // foysal
+          $request->validate([
+            'title' => 'string',
+            'content' => 'string', 
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'meta_keywords' => 'string',
+        ]);
+
         $category = Page::findorfail($id);
         $category->page_category_id = $request->page_category_id;
         $category->title = $request->title;

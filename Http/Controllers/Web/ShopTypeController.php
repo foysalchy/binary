@@ -57,12 +57,13 @@ class ShopTypeController extends Controller
      */
     public function store(Request $request)
     {
+                // validate to foysal
         $validatedData = $request->validate([
-            'title' => 'required|unique:shop_types',
-            'short_description' => 'required',
+            'title' => 'string|required|unique:shop_types',
+            'short_description' => 'string|required',
             'image' => 'required',
             'status' => 'required',
-            'slug' => 'required'
+            'slug' => 'string|required'
         ]);
 
 
@@ -145,7 +146,12 @@ class ShopTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        // validate to foysal
+        $validatedData = $request->validate([
+            'title' => 'string',
+            'short_description' => 'string',
+            'slug' => 'string'
+        ]);
         $data = ShopType::find($id);
         $data->title = $request->title;
         $data->slug = $request->slug;

@@ -50,8 +50,10 @@ class SliderBoxImageController extends Controller
      */
     public function store(Request $request)
     {
+        // foysal
         $validatedData = $request->validate([
-            'title' => 'required',
+            'title' => 'string|required',
+            'url'=>'string'
         ]);
             $data = new SliderBoxImage ();
             $data->title = $request->title;
@@ -131,6 +133,12 @@ class SliderBoxImageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // foysal
+        $request->validate([
+            'title' => 'string',
+            'url'=>'string'
+        ]);
+
         $data = SliderBoxImage::find($id);
         $data->title = $request->title;
         $data->url = $request->url;

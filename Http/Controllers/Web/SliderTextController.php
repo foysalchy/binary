@@ -54,8 +54,9 @@ class SliderTextController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
-            'text' => 'required|unique:slider_texts',
+            'text' => 'string|required|unique:slider_texts',
             'status' => 'required',
         ]);
 
@@ -110,6 +111,10 @@ class SliderTextController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //foysal
+        $validatedData = $request->validate([
+            'text' => 'string',
+        ]);
 
         $data = SliderText::find($id);
         $data->text = $request->text;

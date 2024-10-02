@@ -55,10 +55,12 @@ class PopupController extends Controller
      */
     public function store(Request $request)
     {
+        //foysal
         $validatedData = $request->validate([
             'image_d' => 'required',
             'image_m' => 'required',
-            'title' => 'required',
+            'title' => 'string|required',
+            'link'=>'string',
         ]);
 
 
@@ -143,6 +145,12 @@ class PopupController extends Controller
      */
     public function update(Request $request, $id)
     {
+         //foysal
+         $validatedData = $request->validate([
+            'title' => 'string|required',
+            'link'=>'string',
+        ]);
+
         $data = Popup::find($id);
         $data->title = $request->title;
         $data->link = $request->link;

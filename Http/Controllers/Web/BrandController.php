@@ -57,11 +57,16 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+         // validate to foysal
         $validatedData = $request->validate([
-            'name' => 'required|unique:brands',
-            'slug' => 'required|unique:brands',
+            'name' => 'string|required|unique:brands',
+            'slug' => 'string|required|unique:brands',
             'image' => 'required',
             'status' => 'required',
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'meta_keywords' => 'string',
+           
         ]);
 
 
@@ -158,6 +163,18 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
+          // validate to foysal
+          $validatedData = $request->validate([
+            'name' => 'string',
+            'slug' => 'string',  
+            'meta_title' => 'string',
+            'meta_des' => 'string',
+            'description' => 'string',
+            'meta_keywords' => 'string',
+            'description_two' => 'string',
+           
+        ]);
+
         $data = Brand::find($id);
         $data->name = $request->name;
         $data->slug = Str::slug($request->slug);

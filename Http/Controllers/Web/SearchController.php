@@ -964,6 +964,12 @@ class SearchController extends Controller
 
     public function productSearch(Request $request)
     {
+          //validate to foysal
+          $validatedData = $request->validate([
+            'product_name'=>'string',
+           
+        ]);
+
         $search_name = $request->product_name;
         $search_slug = str::slug($search_name);
         //$products = Cache::get('search_title_'.$search_slug);
@@ -993,6 +999,11 @@ class SearchController extends Controller
 
     public function producSearchNor(Request $request)
     {
+        $validatedData = $request->validate([
+            'product_name'=>'string',
+           
+        ]);
+
         $SiteSetting = SiteSetting::where('status', 1)->first();
         
         if(!empty($request)){

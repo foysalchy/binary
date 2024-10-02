@@ -376,11 +376,12 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
+        // validate to foysal
         $validatedData = $request->validate([
             'image_d' => 'required',
             'image_m' => 'required',
-            'link' => 'required',
-            'title' => 'required',
+            'link' => 'required|string',
+            'title' => 'required|string',
             'status' => 'required',
         ]);
 

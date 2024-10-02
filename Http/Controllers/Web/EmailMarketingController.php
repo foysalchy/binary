@@ -47,9 +47,10 @@ class EmailMarketingController extends Controller
         return view('backend.admin.email.details');
     }
     public function email_details(Request $request){
+        //foysal
         $validatedData = $request->validate([
-	        'subject' => 'required',
-	        'description' => 'required',
+	        'subject' => 'string|required',
+	        'description' => 'string|required',
 
 	    ]);
         $data = EmailSetting::first();
@@ -84,6 +85,14 @@ class EmailMarketingController extends Controller
         return view('backend.admin.email.in_mail_details',compact('customer_mail'));
     }
     public function save_individual_email(Request $request){
+
+         //foysal
+         $validatedData = $request->validate([
+	        'subject' => 'string',
+	        'description' => 'string',
+
+	    ]);
+
         $customer = Customer::find($request->customer_id);
         $name = $customer->first_name.' '.$customer->last_name;
         $email = $customer->email;
